@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Aurex_Core\Aurex_Core.csproj" />
+  </ItemGroup>
+
 </Project>
