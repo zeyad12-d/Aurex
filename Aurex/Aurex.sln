@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurex_Core", "Aurex_Core\Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurex_Infrastructure", "Aurex_Infrastructure\Aurex_Infrastructure.csproj", "{CB33188E-AAB1-48F2-B462-8DB0918A3626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurex_Servives", "Aurex_Servives\Aurex_Servives.csproj", "{086D0493-49B3-4728-AB15-6C8B980C72F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurex_Services", "Aurex_Servives\Aurex_Services.csproj", "{086D0493-49B3-4728-AB15-6C8B980C72F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
