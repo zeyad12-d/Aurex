@@ -12,8 +12,8 @@
 
         // Foreign keys
         public int DealId { get; set; }
-        public Deal? Deal { get; set; }
-        public int TeamLeaderId { get; set; }
+        public Deal Deal { get; set; }
+        public int? TeamLeaderId { get; set; }
         public Employee? TeamLeader { get; set; }
 
         public ICollection<EmployeeProject>? EmployeeProjects { get; set; }

@@ -1,4 +1,6 @@
 
+using Aurex_API.Extenenes;
+
 namespace Aurex_API
 {
     public class Program
@@ -13,6 +15,7 @@ namespace Aurex_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSqlConnection(builder.Configuration);
 
             var app = builder.Build();
 

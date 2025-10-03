@@ -27,7 +27,7 @@
         public ICollection<EmployeeProject>? EmployeeProjects { get; set; }
 
 
-        public ICollection<Project> LeadingProjects { get; set; } = new List<Project>();
+        public ICollection<Project>? LeadingProjects { get; set; } = new List<Project>();
 
 
     }
