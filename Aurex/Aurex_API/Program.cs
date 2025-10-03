@@ -15,7 +15,9 @@ namespace Aurex_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            // Extentsion  config
             builder.Services.AddSqlConnection(builder.Configuration);
+            builder.Services.AddIdentityConfiguration();
 
             var app = builder.Build();
 
