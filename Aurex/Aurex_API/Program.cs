@@ -1,11 +1,12 @@
 
 using Aurex_API.Extenenes;
+using System.Threading.Tasks;
 
 namespace Aurex_API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +30,26 @@ namespace Aurex_API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
+            
             app.UseAuthorization();
-
+           
 
             app.MapControllers();
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var configuration = services.GetRequiredService<IConfiguration>();
+                    await AccountInitializer.Initialize(services,builder.Configuration);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
 
             app.Run();
         }
