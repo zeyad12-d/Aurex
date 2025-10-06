@@ -19,6 +19,8 @@ namespace Aurex_API
             // Extentsion  config
             builder.Services.AddSqlConnection(builder.Configuration);
             builder.Services.AddIdentityConfiguration();
+            builder.Services.AddSwaggerConfiguration();
+            builder.Services.AddJwtAuthentication(builder.Configuration);
 
             var app = builder.Build();
 
