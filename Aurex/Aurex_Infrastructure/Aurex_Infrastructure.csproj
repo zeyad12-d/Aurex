@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Aurex_Core\Aurex_Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

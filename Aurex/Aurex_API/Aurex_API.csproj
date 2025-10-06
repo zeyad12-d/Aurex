@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Aurex_Servives\Aurex_Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aurex_Servives\Aurex_Services.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
