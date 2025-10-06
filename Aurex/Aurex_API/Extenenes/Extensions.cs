@@ -1,4 +1,6 @@
 ﻿using Aurex_Core.Entites;
+using Aurex_Core.Interfaces;
+using Aurex_Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -93,5 +95,11 @@ namespace Aurex_API.Extenenes
         }
         #endregion
 
+        #region UnitOfWork
+        public static void AddUnitOfWork(this IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+        #endregion
     }
 }
