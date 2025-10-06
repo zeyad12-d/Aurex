@@ -24,6 +24,7 @@ namespace Aurex_API.Extenenes
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
+                options.User.RequireUniqueEmail = true;
             })
              .AddEntityFrameworkStores<Aurex_Infrastructure.Data.AurexDBcontext>()
             .AddDefaultTokenProviders();
