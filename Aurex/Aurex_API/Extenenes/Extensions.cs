@@ -101,5 +101,13 @@ namespace Aurex_API.Extenenes
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
         #endregion
+
+        #region AddAutoMapperConfigration
+        public static void AddAutoMapperConfigration(this IServiceCollection services)
+        {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        }
+
+        #endregion
     }
 }

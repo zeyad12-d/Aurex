@@ -1,17 +1,19 @@
 ﻿using Aurex_Core.DTO.AccountDtos;
 using Aurex_Infrastructure.DTO.AccountDtos;
-using System;
+using Aurex_Services.ApiHelper; 
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Aurex_Core.Interfaces.ModleInterFaces
+namespace Aurex_Core.Interfaces.ModelInterFaces
 {
-    public interface IAccountServices 
+    public interface IAccountServices
     {
-        Task<String> Login(LoginDto loginDto );
-        Task<UserDto> Register(RegisterDto registerDto);
-        Task<string> logout(string email);
+        Task<ApiResponse<string>> Login(LoginDto loginDto);
+        Task<ApiResponse<UserDto>> Register(RegisterDto registerDto);
+        Task<ApiResponse<string>> Logout(string email);
+        Task<ApiResponse<UserDto>> FindUserByEmail(string email);
+        Task<ApiResponse<IEnumerable<UserDto>>> GetAllUsers();
+        Task<ApiResponse<IEnumerable<UserDto>>> GetUsersByRole(string roleName);
+        Task<ApiResponse<string>> DeleteUserByEmail(string email);
     }
 }
