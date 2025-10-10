@@ -1,7 +1,7 @@
 ﻿using Aurex_Core.DTO.AccountDtos;
 using Aurex_Core.Entites;
+using Aurex_Core.DTO.AccountDtos;
 using Aurex_Core.Interfaces.ModelInterFaces;
-using Aurex_Infrastructure.DTO.AccountDtos;
 using Aurex_Services.ApiHelper;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
@@ -85,7 +85,7 @@ namespace Aurex_Services.Services
                 return ApiResponse<UserDto>.CreateFail($"User creation failed: {errors}");
             }
 
-            await _userManager.AddToRoleAsync(user, "User");
+            await _userManager.AddToRoleAsync(user, "AccountPerson");
 
             var userDto = _mapper.Map<UserDto>(user);
             return ApiResponse<UserDto>.CreateSuccess(userDto, "User registered successfully.");

@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace Aurex_Infrastructure.DTO.AccountDtos
+namespace Aurex_Core.DTO.AccountDtos
 {
     public record RegisterDto
     {
@@ -22,6 +22,6 @@ namespace Aurex_Infrastructure.DTO.AccountDtos
 
         [Required(ErrorMessage = "Phone number is required.")]
         [Phone(ErrorMessage = "Invalid phone number.")]
-        public string phoneNumber { get; init; } = null!;
+        public string PhoneNumber { get; init; } = null!;
     }
 }

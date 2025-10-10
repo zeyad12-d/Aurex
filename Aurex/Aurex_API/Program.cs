@@ -22,6 +22,7 @@ namespace Aurex_API
             builder.Services.AddSwaggerConfiguration();
             builder.Services.AddJwtAuthentication(builder.Configuration);
             builder.Services.AddAutoMapperConfigration();
+            builder.Services.AddUnitOfWork();
             builder.Services.AddFactoryPattern();
             builder.Services.AddServices();
 
@@ -41,7 +42,7 @@ namespace Aurex_API
            
 
             app.MapControllers();
-         /*   using (var scope = app.Services.CreateScope())
+            using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
@@ -55,7 +56,7 @@ namespace Aurex_API
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
-         */
+         
             app.Run();
         }
     }

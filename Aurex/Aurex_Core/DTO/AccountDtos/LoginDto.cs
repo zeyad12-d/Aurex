@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Aurex_Infrastructure.DTO.AccountDtos
+namespace Aurex_Core.DTO.AccountDtos
 {
     public record LoginDto
     {

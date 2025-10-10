@@ -127,7 +127,8 @@ namespace Aurex_API.Extenenes
         #region AddAutoMapperConfigration
         public static void AddAutoMapperConfigration(this IServiceCollection services)
         {
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(typeof(Aurex_Services.MapperProfile.AccountProfile).Assembly);
+            ;
         }
 
         #endregion
