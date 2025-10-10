@@ -5,6 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f0a58d06-d245-4502-b030-2fbb7cb493a1</UserSecretsId>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,10 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aurex_Servives\Aurex_Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
