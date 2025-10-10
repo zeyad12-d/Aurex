@@ -22,6 +22,8 @@ namespace Aurex_API
             builder.Services.AddSwaggerConfiguration();
             builder.Services.AddJwtAuthentication(builder.Configuration);
             builder.Services.AddAutoMapperConfigration();
+            builder.Services.AddFactoryPattern();
+            builder.Services.AddServices();
 
             var app = builder.Build();
 
