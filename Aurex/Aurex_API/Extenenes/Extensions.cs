@@ -1,6 +1,10 @@
 ﻿using Aurex_Core.Entites;
 using Aurex_Core.Interfaces;
+using Aurex_Core.Interfaces.ModelInterFaces;
 using Aurex_Infrastructure.Repositories;
+using Aurex_Services.Services;
+using Aurex_Services.Services.Factory;
+using Aurex_Services.Services.Manager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -108,6 +112,22 @@ namespace Aurex_API.Extenenes
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
+        #endregion
+
+        #region Factory pattern
+        public static void AddFactoryPattern(this IServiceCollection services)
+        {
+            services.AddScoped<IServiceFactory, ServiceFactory>();
+            services.AddScoped<IServicesManager, ServicesManager>();
+          
+        }
+        #endregion
+
+        #region services 
+        public static void AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<IAccountServices,AccountServices>();
+        }
         #endregion
     }
 }
