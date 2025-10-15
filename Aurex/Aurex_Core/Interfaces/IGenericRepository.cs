@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
-namespace Aurex_Core.Interfaces
+public interface IGenericRepository<T> where T : class
 {
-    public interface IGenericRepository<T> where T : class
-    {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(int id);
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task AddAsync(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        Task SaveChangesAsync();
-    }
+    Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
+    Task AddAsync(T entity, CancellationToken cancellationToken = default);
+    void Update(T entity);
+    void Delete(T entity);
+    IQueryable<T> GetQueryable(bool asTracking = false);
+    Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null, CancellationToken cancellationToken = default);
+    Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
 }
