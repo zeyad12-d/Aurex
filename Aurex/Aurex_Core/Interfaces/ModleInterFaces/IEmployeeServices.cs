@@ -14,7 +14,7 @@ namespace Aurex_Core.Interfaces.ModleInterFaces
         Task<ApiResponse<IEnumerable<EmployeeResponseDto>>> GetEmployeesByDepartmentIdAsync(int departmentId);
         Task<ApiResponse<int>> GetTotalEmployeesCountAsync();
         Task<ApiResponse<int>> GetEmployeesCountByDepartmentIdAsync(int departmentId);
-        Task<ApiResponse<IEnumerable<EmployeeResponseDto>>> SearchEmployeesAsync(string name, int page, int pageSize);
+        Task<ApiResponse<PagedResult<EmployeeResponseDto>>> SearchEmployeesAsync(string name, int page, int pageSize);
         Task<ApiResponse<IEnumerable<EmployeeResponseDto>>> GetTopNEmployeesByScoreAsync(int n);
     }
 }
