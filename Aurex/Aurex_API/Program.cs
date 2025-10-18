@@ -25,6 +25,7 @@ namespace Aurex_API
             builder.Services.AddUnitOfWork();
             builder.Services.AddFactoryPattern();
             builder.Services.AddServices();
+            builder.Services.AddCorsConfiguration();
 
             var app = builder.Build();
 
@@ -56,8 +57,9 @@ namespace Aurex_API
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
-         
+            app.UseCors("CorsPolicy");
+
             app.Run();
         }
     }
-}
+}   

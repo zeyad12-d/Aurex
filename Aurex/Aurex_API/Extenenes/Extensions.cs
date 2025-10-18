@@ -1,6 +1,7 @@
 ﻿using Aurex_Core.Entites;
 using Aurex_Core.Interfaces;
-using Aurex_Core.Interfaces.ModelInterFaces;
+
+using Aurex_Core.Interfaces.ModleInterFaces;
 using Aurex_Infrastructure.Repositories;
 using Aurex_Services.Services;
 using Aurex_Services.Services.Factory;
@@ -146,6 +147,22 @@ namespace Aurex_API.Extenenes
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<IAccountServices,AccountServices>();
+            services.AddScoped<IEmployeeServices, EmployeeServices>();
+        }
+        #endregion
+
+        #region Cors // development environment
+        public static void AddCorsConfiguration(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
         }
         #endregion
     }

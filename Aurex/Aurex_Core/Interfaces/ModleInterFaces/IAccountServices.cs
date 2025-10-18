@@ -3,7 +3,7 @@ using Aurex_Services.ApiHelper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Aurex_Core.Interfaces.ModelInterFaces
+namespace Aurex_Core.Interfaces.ModleInterFaces
 {
     public interface IAccountServices
     {
