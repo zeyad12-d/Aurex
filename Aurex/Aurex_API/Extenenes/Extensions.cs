@@ -146,6 +146,9 @@ namespace Aurex_API.Extenenes
         #region services 
         public static void AddServices(this IServiceCollection services)
         {
+            // filters Log information 
+            services.AddScoped<LogActivityFilter>();
+            //services 
             services.AddScoped<IAccountServices,AccountServices>();
             services.AddScoped<IEmployeeServices, EmployeeServices>();
         }
