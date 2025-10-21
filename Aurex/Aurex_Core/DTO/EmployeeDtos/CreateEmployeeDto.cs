@@ -14,5 +14,8 @@ namespace Aurex_Core.DTO.EmployeeDtos
         public string ImageUrl { get; set; } = string.Empty;
 
         public int Score { get; set; }
+
+        public int DepartmentId { get; set; }
+        public string? UserId { get; set; }
     }
 }

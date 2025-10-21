@@ -9,7 +9,7 @@ namespace Aurex_Services.MapperProfile
         public EmployeeProfile()
         {
             CreateMap<Employee,EmployeeResponseDto>()
-                .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name !=null ? src .Department.Name:null))
+                .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department != null ? src.Department.Name : "No Department"))
                 .ReverseMap(); 
             CreateMap<CreateEmployeeDto, Employee>().ReverseMap();
 

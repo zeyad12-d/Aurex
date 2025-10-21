@@ -30,7 +30,8 @@ namespace Aurex_Services.Services
                 pageSize = pageSize <= 0 ? 12 : pageSize;
 
                 var repo = _unitOfWork.Repository<Employee>();
-                var query = repo.GetQueryable();
+                var query = repo.GetQueryable()
+                    .Include(e => e.Department);
 
                 var totalCount = await query.CountAsync();
                 if (totalCount == 0)
@@ -68,7 +69,10 @@ namespace Aurex_Services.Services
         {
             try
             {
-                var employee = await _unitOfWork.Repository<Employee>().GetByIdAsync(id);
+                var repo = _unitOfWork.Repository<Employee>();
+                var employee = await repo.GetQueryable()
+                    .Include(e => e.Department)
+                    .FirstOrDefaultAsync(e => e.Id == id);
 
                 if (employee == null)
                 {
@@ -100,7 +104,12 @@ namespace Aurex_Services.Services
                 await repo.AddAsync(employee);
                 await _unitOfWork.CompleteAsync();
 
-                var employeeResponseDto = _mapper.Map<EmployeeResponseDto>(employee);
+                // Retrieve the created employee with Department included
+                var createdEmployee = await repo.GetQueryable()
+                    .Include(e => e.Department)
+                    .FirstOrDefaultAsync(e => e.Id == employee.Id);
+
+                var employeeResponseDto = _mapper.Map<EmployeeResponseDto>(createdEmployee);
                 return ApiResponse<EmployeeResponseDto>.CreateSuccess(employeeResponseDto, "Employee created successfully.");
             }
             catch (Exception ex)
@@ -120,7 +129,9 @@ namespace Aurex_Services.Services
             try
             {
                 var repo = _unitOfWork.Repository<Employee>();
-                var existingEmployee = await repo.GetByIdAsync(updateEmployee.Id);
+                var existingEmployee = await repo.GetQueryable()
+                    .Include(e => e.Department)
+                    .FirstOrDefaultAsync(e => e.Id == updateEmployee.Id);
                 if (existingEmployee == null)
                 {
                     return ApiResponse<EmployeeResponseDto>.CreateFail("Employee not found.");
@@ -128,7 +139,13 @@ namespace Aurex_Services.Services
                 _mapper.Map(updateEmployee, existingEmployee);
                 repo.Update(existingEmployee);
                 await _unitOfWork.CompleteAsync();
-                var employeeResponseDto = _mapper.Map<EmployeeResponseDto>(existingEmployee);
+                
+                // Retrieve the updated employee with Department included
+                var updatedEmployee = await repo.GetQueryable()
+                    .Include(e => e.Department)
+                    .FirstOrDefaultAsync(e => e.Id == updateEmployee.Id);
+                    
+                var employeeResponseDto = _mapper.Map<EmployeeResponseDto>(updatedEmployee);
                 return ApiResponse<EmployeeResponseDto>.CreateSuccess(employeeResponseDto, "Employee updated successfully.");
             }
             catch (Exception ex)
@@ -179,7 +196,8 @@ namespace Aurex_Services.Services
             try
             {
                 var repo = _unitOfWork.Repository<Employee>();
-                var query = repo.GetQueryable();
+                var query = repo.GetQueryable()
+                    .Include(e => e.Department);
                 var employees = await query
                     .Where(e => e.DepartmentId == departmentId)
                     .ToListAsync();
@@ -254,6 +272,7 @@ namespace Aurex_Services.Services
 
                 var repo = _unitOfWork.Repository<Employee>();
                 var query = repo.GetQueryable()
+                                .Include(e => e.Department)
                                 .AsNoTracking()
                                 .Where(e => e.Name.ToLower().Contains(name.ToLower()));
 
@@ -290,7 +309,8 @@ namespace Aurex_Services.Services
                 return ApiResponse<IEnumerable<EmployeeResponseDto>>.CreateFail("N must be greater than zero.");
             }
             var repo = _unitOfWork.Repository<Employee>();
-            var query = repo.GetQueryable();
+            var query = repo.GetQueryable()
+                .Include(e => e.Department);
             var topEmployees = await query
                 .OrderByDescending(e => e.Score)
                 .Take(n)

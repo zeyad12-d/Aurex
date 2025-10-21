@@ -1,6 +1,5 @@
 ﻿using Aurex_Core.DTO.AccountDtos;
 using Aurex_Core.Entites;
-using Aurex_Core.DTO.AccountDtos;
 using Aurex_Core.Interfaces.ModleInterFaces;
 using Aurex_Services.ApiHelper;
 using AutoMapper;

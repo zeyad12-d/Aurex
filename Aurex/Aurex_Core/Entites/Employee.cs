@@ -11,7 +11,7 @@
         public int Score { get; set; }
 
         // Navigation property
-        public string UserId { get; set; } = string.Empty;
+        public string? UserId { get; set; }
 
         public User? User { get; set; }
 
