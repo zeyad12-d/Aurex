@@ -151,6 +151,7 @@ namespace Aurex_API.Extenenes
             //services 
             services.AddScoped<IAccountServices,AccountServices>();
             services.AddScoped<IEmployeeServices, EmployeeServices>();
+            services.AddScoped<IDepartmentService,DepartmentServices>();
         }
         #endregion
 
