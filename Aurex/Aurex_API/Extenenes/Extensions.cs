@@ -40,7 +40,7 @@ namespace Aurex_API.Extenenes
         #endregion
 
 
-         # region Swagger
+        # region Swagger
 
         public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
@@ -152,6 +152,7 @@ namespace Aurex_API.Extenenes
             services.AddScoped<IAccountServices,AccountServices>();
             services.AddScoped<IEmployeeServices, EmployeeServices>();
             services.AddScoped<IDepartmentService,DepartmentServices>();
+            services.AddScoped<IDealsService,DealService>();
         }
         #endregion
 

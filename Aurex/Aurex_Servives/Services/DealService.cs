@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace Aurex_Services.Services;
 
-public class DealServices : IDealsServices
+public class DealService : IDealsService
 {
     private readonly IMapper _mapper; 
     private  readonly IUnitOfWork _unitOfWork;
@@ -18,7 +18,7 @@ public class DealServices : IDealsServices
  
     
 
-    public DealServices(IMapper mapper, IUnitOfWork unitOfWork )
+    public DealService(IMapper mapper, IUnitOfWork unitOfWork )
     {
         _mapper = mapper;
         _unitOfWork = unitOfWork;

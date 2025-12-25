@@ -8,6 +8,6 @@ namespace Aurex_Core.Interfaces
         IAccountServices AccountServices { get; }
         IEmployeeServices EmployeeServices { get; }
         IDepartmentService DepartmentService { get; }
-
+       IDealsService DealsService { get; }
     }
 }
