@@ -1,7 +1,7 @@
-﻿using Aurex_Core.DTO.AccountDtos;
+﻿using Aurex_Core.ApiHelper;
+using Aurex_Core.DTO.AccountDtos;
 using Aurex_Core.Entites;
-using Aurex_Core.Interfaces.ModleInterFaces;
-using Aurex_Services.ApiHelper;
+using Aurex_Core.Interfaces.ModelInterfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

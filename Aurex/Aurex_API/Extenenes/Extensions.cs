@@ -1,7 +1,7 @@
 ﻿using Aurex_Core.Entites;
 using Aurex_Core.Interfaces;
 
-using Aurex_Core.Interfaces.ModleInterFaces;
+using Aurex_Core.Interfaces.ModelInterfaces;
 using Aurex_Infrastructure.Repositories;
 using Aurex_Services.Services;
 using Aurex_Services.Services.Factory;
@@ -153,6 +153,7 @@ namespace Aurex_API.Extenenes
             services.AddScoped<IEmployeeServices, EmployeeServices>();
             services.AddScoped<IDepartmentService,DepartmentServices>();
             services.AddScoped<IDealsService,DealService>();
+            services.AddScoped<IClientService, ClientServices>();
         }
         #endregion
 

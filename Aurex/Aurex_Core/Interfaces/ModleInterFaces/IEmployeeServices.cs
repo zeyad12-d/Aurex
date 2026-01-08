@@ -1,8 +1,8 @@
 ﻿using Aurex_Core.ApiHelper;
 using Aurex_Core.DTO.EmployeeDtos;
-using Aurex_Services.ApiHelper;
 
-namespace Aurex_Core.Interfaces.ModleInterFaces
+
+namespace Aurex_Core.Interfaces.ModelInterfaces
 {
     public interface IEmployeeServices
     {

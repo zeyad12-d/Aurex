@@ -1,4 +1,4 @@
-﻿namespace Aurex_Services.ApiHelper
+﻿namespace Aurex_Core.ApiHelper
 {
     public class ApiResponse<T>
     {

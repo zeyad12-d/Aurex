@@ -1,5 +1,5 @@
 ﻿
-using Aurex_Core.Interfaces.ModleInterFaces;
+using Aurex_Core.Interfaces.ModelInterfaces;
 
 namespace Aurex_Core.Interfaces
 {
@@ -9,5 +9,7 @@ namespace Aurex_Core.Interfaces
         IEmployeeServices EmployeeServices { get; }
         IDepartmentService DepartmentService { get; }
        IDealsService DealsService { get; }
+
+        IClientService ClientService { get; } 
     }
 }

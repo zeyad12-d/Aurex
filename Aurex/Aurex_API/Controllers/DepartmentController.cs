@@ -1,5 +1,6 @@
 ﻿using Aurex_Core.DTO.DepartmentDtos;
 using Aurex_Core.Interfaces;
+using Aurex_Core.Interfaces.ModelInterfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,7 @@ namespace Aurex_API.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IServicesManager _servicesManager;
-
+   
         /// <summary>
         /// Initializes a new instance of the <see cref="DepartmentController"/> class.
         /// </summary>

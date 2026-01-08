@@ -1,8 +1,8 @@
+using Aurex_Core.ApiHelper;
 using Aurex_Core.DTO.DealDtos;
 using Aurex_Core.Entites;
 using Aurex_Core.Interfaces;
-using Aurex_Core.Interfaces.ModleInterFaces;
-using Aurex_Services.ApiHelper;
+using Aurex_Core.Interfaces.ModelInterfaces;
 using AutoMapper;
 
 namespace Aurex_Services.Services;
@@ -88,3 +88,4 @@ public class DealService : IDealsService
             .CreateSuccess(_mapper.Map<DealResponseDto>(deal),"Deal Deleted Successfully");
     }
 }
+ 

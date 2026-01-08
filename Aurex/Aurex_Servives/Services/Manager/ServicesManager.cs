@@ -1,5 +1,5 @@
 ﻿using Aurex_Core.Interfaces;
-using Aurex_Core.Interfaces.ModleInterFaces;
+using Aurex_Core.Interfaces.ModelInterfaces;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -16,19 +16,24 @@ namespace Aurex_Services.Services.Manager
         private readonly Lazy<IEmployeeServices> _employeeServices;
         private readonly Lazy<IDepartmentService> _DepartmentService; 
         private readonly Lazy<IDealsService> _dealsServices ;
+        private readonly Lazy<IClientService> _clientService; 
+
         public ServicesManager(IServiceFactory serviceFactory)
         {
             _serviceFactory = serviceFactory ?? throw new ArgumentNullException(nameof(serviceFactory));
             _accountServices = new Lazy<IAccountServices>(() => _serviceFactory.CreateService<IAccountServices>());
             _employeeServices = new Lazy<IEmployeeServices>(() => _serviceFactory.CreateService<IEmployeeServices>());
             _DepartmentService = new Lazy<IDepartmentService>(() => _serviceFactory.CreateService<IDepartmentService>());
-            _dealsServices = new Lazy<IDealsService>(() => _serviceFactory.CreateService<IDealsService>());
+            _dealsServices = new Lazy<IDealsService>(() => _serviceFactory.CreateService<IDealsService>()); 
+            _clientService = new Lazy<IClientService>(() => _serviceFactory.CreateService<IClientService>()); 
         }
         public IAccountServices AccountServices => _accountServices.Value;
         public IEmployeeServices EmployeeServices => _employeeServices.Value;
 
         public IDepartmentService DepartmentService => _DepartmentService.Value;
-        public IDealsService DealsService => _dealsServices.Value; 
+        public IDealsService DealsService => _dealsServices.Value;  
+
+        public IClientService ClientService => _clientService.Value; 
 
     }
 }

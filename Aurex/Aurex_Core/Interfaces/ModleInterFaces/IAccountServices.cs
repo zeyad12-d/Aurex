@@ -1,9 +1,10 @@
-﻿using Aurex_Core.DTO.AccountDtos;
-using Aurex_Services.ApiHelper; 
+﻿using Aurex_Core.ApiHelper;
+using Aurex_Core.DTO.AccountDtos;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Aurex_Core.Interfaces.ModleInterFaces
+namespace Aurex_Core.Interfaces.ModelInterfaces
 {
     public interface IAccountServices
     {
