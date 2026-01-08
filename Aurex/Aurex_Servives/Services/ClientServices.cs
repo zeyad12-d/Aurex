@@ -71,6 +71,7 @@ namespace Aurex_Services.Services
             {
                 return ApiResponse <ClientResponseDto?>.CreateFail($"An error occurred: {ex.Message}");
             }
+
         }
         #endregion 
 
