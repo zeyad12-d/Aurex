@@ -12,6 +12,10 @@ namespace Aurex_Services.Services
     {
            readonly IUnitOfWork _unitOfWork;
            readonly IMapper _mapper;
+        private IGenericRepository<Client> _repository
+            => _unitOfWork.Repository<Client>();
+
+
         public ClientServices( IUnitOfWork unit , IMapper mapper  )
         {
             _unitOfWork = unit;
@@ -73,22 +77,59 @@ namespace Aurex_Services.Services
             }
 
         }
-        #endregion 
+        #endregion
+
+
+        #region create Client 
+        public async Task<ApiResponse<ClientResponseDto>> CreateClientsAsync(CreateClientDto createClientDto)
+        {
+            try
+            {
+                if (createClientDto == null)
+                    return ApiResponse<ClientResponseDto>.CreateFail("Client is Empty");
+
+               var client= _mapper.Map<Client>(createClientDto);
+
+               await _repository.AddAsync(client);
+               await _unitOfWork.CompleteAsync();
+
+                return ApiResponse<ClientResponseDto>.CreateSuccess(_mapper.Map<ClientResponseDto>(client));
+
+
+            }
+            catch(Exception EX)
+            {
+                return ApiResponse<ClientResponseDto>.CreateFail($"An error occurred: {EX.Message}");
+            }
+        }
+        #endregion
+
+        #region Delete Client  
+        public async Task<ApiResponse<ClientResponseDto>> DeleteClientAsync(int clientId)
+        {
+            if (clientId <= 0)
+                return ApiResponse<ClientResponseDto>.CreateFail("UnValid Id");
+
+           var client = await _repository.GetByIdAsync(clientId);
+
+            if (client == null)
+                return ApiResponse<ClientResponseDto>.CreateFail(" Client Not Found ");
+
+             _repository.Delete(client);
+            await _unitOfWork.CompleteAsync();
+            return ApiResponse<ClientResponseDto>.CreateSuccess(_mapper.Map<ClientResponseDto>(client), "Client Deleted Succeccfully");
+        }
+        #endregion
+
 
         #region Client Services
-        public Task<ApiResponse<ClientResponseDto>> CreateClientsAsync(CreateClientDto createClientDto)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<ApiResponse<ClientResponseDto>> DeleteClientAsync(int clientId)
-        {
-            throw new NotImplementedException();
-        }
 
-       
 
-       
+
+
+
+
 
         public Task<ApiResponse<ClientDealsDto?>> GetClientDealsAsync(int clientId)
         {

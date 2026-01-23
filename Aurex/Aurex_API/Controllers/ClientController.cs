@@ -1,4 +1,5 @@
-﻿using Aurex_Core.Interfaces;
+﻿using Aurex_Core.DTO.ClientDtos;
+using Aurex_Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,12 @@ namespace Aurex_API.Controllers
     {
         private readonly IServicesManager _servicesManager;
 
-        public ClientController( IServicesManager servicesManager)
+        public ClientController(IServicesManager servicesManager)
         {
-            _servicesManager = servicesManager; 
-            
+            _servicesManager = servicesManager;
+
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAllClient()
         {
@@ -23,13 +25,29 @@ namespace Aurex_API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetClientById(int id)
         {
             var result = await _servicesManager.ClientService.GetClientByIdAsync(id);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
-        } 
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateClientAsync(CreateClientDto dto)
+        {
+            var result = await _servicesManager.ClientService.CreateClientsAsync(dto);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
+        [HttpDelete("{ClientId}")]
+        public async Task<IActionResult> DeleteClientAsync(int ClientId)
+        {
+            var result = await _servicesManager.ClientService.DeleteClientAsync(ClientId);
+            if(result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
     }
 }
