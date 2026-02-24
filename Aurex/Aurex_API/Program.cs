@@ -1,6 +1,6 @@
-
 using Aurex_API.Extenenes;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Aurex_API
 {
@@ -14,7 +14,11 @@ namespace Aurex_API
 
             builder.Services.AddControllers(
                 op=>op.Filters.Add<LogActivityFilter>()
-                );
+                )
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

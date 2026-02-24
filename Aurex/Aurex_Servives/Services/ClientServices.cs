@@ -122,6 +122,26 @@ namespace Aurex_Services.Services
         #endregion
 
 
+    
+        #region Get Client Deals 
+        public async Task<ApiResponse<ClientDealsDto?>> GetClientDealsAsync(int clientId)
+        {
+           var client = await _repository.GetQueryable().Include(c => c.Deals)
+                .FirstOrDefaultAsync(c => c.Id == clientId);
+            if (client == null)
+                return ApiResponse<ClientDealsDto?>.CreateFail("Client Not Found");
+
+            var ClientDto = _mapper.Map<ClientDealsDto>(client);
+
+            return ApiResponse<ClientDealsDto?>.CreateSuccess(ClientDto, "Client Retrived Succeccfully");
+        }
+
+
+
+
+        #endregion
+
+
         #region Client Services
 
 
@@ -131,10 +151,6 @@ namespace Aurex_Services.Services
 
 
 
-        public Task<ApiResponse<ClientDealsDto?>> GetClientDealsAsync(int clientId)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<ApiResponse<int>> GetTotalClientsCountAsync()
         {
