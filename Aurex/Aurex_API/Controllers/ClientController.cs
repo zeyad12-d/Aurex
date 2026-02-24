@@ -45,9 +45,18 @@ namespace Aurex_API.Controllers
         public async Task<IActionResult> DeleteClientAsync(int ClientId)
         {
             var result = await _servicesManager.ClientService.DeleteClientAsync(ClientId);
-            if(result.Success)
+            if (result.Success)
                 return Ok(result);
             return BadRequest(result);
+        }
+        [HttpGet("Deals/{ClientId}")]
+        public async Task<IActionResult> GetClientDealsAsync(int ClientId)
+        {
+            var result = await _servicesManager.ClientService.GetClientDealsAsync(ClientId);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+
         }
     }
 }
