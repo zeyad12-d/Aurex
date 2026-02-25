@@ -4,6 +4,8 @@
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
+        public string Name { get; set; } = String.Empty;
+        public string Description { get; set; } = String.Empty;
         public int Probability { get; set; }     
         public DateTime DeadlineDate { get; set; }
         public ProjectStatus Status { get; set; }
